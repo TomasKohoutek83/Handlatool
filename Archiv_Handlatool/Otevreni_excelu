@@ -1,0 +1,2 @@
+import os
+os.system('start "excel" C:/Users/kot5brn/Desktop/NV.xlsx"')
