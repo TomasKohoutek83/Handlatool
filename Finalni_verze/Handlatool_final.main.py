@@ -34,7 +34,7 @@ Rozsireni pro jine typy materialu napr: Spojovaci material, potrubi apod.
 
 
 
-# Importy z knihoven 
+# Importy 
 from PyQt5 import QtWidgets as qtw
 from PyQt5 import QtCore as qtc
 from PyQt5.QtWidgets import QApplication,QWidget,QInputDialog,QLineEdit,QFileDialog
@@ -43,13 +43,12 @@ import pandas as pd
 import numpy as py
 import os
 
-# Import treti strany 
 from Handlatool_final_QT import Ui_Form
 
 # Seznamy standartu, nestandartu dle sekvencniho cisla pro (L - XXL)
 standart_1= pd.DataFrame(
     {
-        #'Radek':[50,49,48,47,46,45,44],
+        
         'Ident': ['R900762684', 'R900008261', 'R900766217', 'R900012455', 'R900012988', 'R900763364', 'R900766416', 'R900762671',
                   'R900766207', 'R900012446', 'R900029699', 'R900766405', 'R900012983', 'R900763356', 'R900762689', 'R900022320',
                   'R900766218', 'R900001263', 'R900012456', 'R900767713', 'R900763365', 'R900766417', 'R900762691', 'R900766219',
@@ -59,16 +58,12 @@ standart_1= pd.DataFrame(
                   'R900012986', 'R900763359', 'R900012449', 'R900766409', 'R900762693', 'R900766222', 'R900029706', 'R900763448',
                   'R900012459', 'R900766421', 'R900012992', 'R900762676', 'R900766211', 'R900029701', 'R900766410', 'R900012450',
                   'R900012987', 'R900763360', 'R900764637'],
-        #'Popis':['UNION NUT          24N/30S-ST3Z00Z','UNION NUT          24N/25S-ST3Z00Z','UNION NUT          24N/20S-ST3Z00Z','UNION NUT          24N-12S-ST3Z00Z','UNION              24T-Z-S-25S-ST3Z00Z','UNION              24S-Z-S-25S-ST3Z00Z','UNION              24S-Z-S-12S-ST3Z00Z'],
-        #'Pocet':[1,23,4,10,2,5,1],
-        #'Zbytek':[0,0,0,0,0,0,0],
-        
-    }
-)
+        }
+                        )
 
 nestandart_1= pd.DataFrame(
     {
-        #'Radek':[34,33,32,31,30,29,28],
+        
         'Ident': ['R901331154','R900030251','R900002864','R900765435','R900765440','R900763650','R900764388','R900767712','R900764643',
                   'R901423992','R900763042','R900765429','R900765206','R901331163','R900765472','R900763641','R900765198','R900765183',
                   'R900763029','R900764632','R900764378','R900023270','R900765191','R901331772','R901423986','R900765182','R900006829',
@@ -81,16 +76,13 @@ nestandart_1= pd.DataFrame(
                   'R900764647','R987202894','R900763654','R900764392','R900002867','R900765208','R900765209','R900765206','R900765207',
                   'R900022437','R901068211','R900765470','R900033078','R900764383','R900765473','R900763645','R900763037','R900765472',
                   'R900765474','R900765469','R900765503'],
-        #'Popis':['MALE CONNECTOR     24SDS-E-S-25S-G1-ST3F00Z','MALE CONNECTOR     24SDS-E-S-25S-G1-ST3F00Z','MALE CONNECTOR     24SDS-E-S-20S-M27X2-ST3F00Z','MALE CONNECTOR     24SDS-E-S-20S-M27X2-ST3F00Z','MALE CONNECTOR     24SDS-E-S-12S-M18X1 5-ST3F00Z','MALE CONNECTOR     24SDS-E-S-12S-M18X1 5-ST3F00Z','MALE CONNECTOR     24SDS-E-S-12S-G3/8-ST3F00Z'],
-        #'Pocet':[1,1,1,1,1,1,4,],
-        #'Zbytek':[0,0,0,0,0,0,0]
     }
-)
+                            )
 
 #Pridani nestanaartu 2 (velikost S)
 nestandart_2 = pd.DataFrame(
     {
-        #'Radek':[34,33,32,31,30,29,28],
+       
         'Ident': ['R900762671','R900766207','R900012446','R900029699','R900766405','R900012983','R900763356','R900762660','R900766203',
                   'R900762674','R900766209','R900012448','R900029700','R900012985','R900766408','R900763358','R900767707','R901331163',
                   'R900765472','R901327071','R901331459','R900033085','R900765474','R900763641','R900765198','R900765183','R900764381',
@@ -107,11 +99,8 @@ nestandart_2 = pd.DataFrame(
                   'R900002863','R900764642','R900763649','R900763041','R900764387','R900012454','R900765434','R900765425','R900765429',
                   'R900765423','R901331128','R900765470','R900764395','R900763638','R900012444','R901331760','R900764629','R900763028',
                   'R900023268','R900765183','R900765173','R900765174'],
-        #'Popis':['MALE CONNECTOR     24SDS-E-S-25S-G1-ST3F00Z','MALE CONNECTOR     24SDS-E-S-25S-G1-ST3F00Z','MALE CONNECTOR     24SDS-E-S-20S-M27X2-ST3F00Z','MALE CONNECTOR     24SDS-E-S-20S-M27X2-ST3F00Z','MALE CONNECTOR     24SDS-E-S-12S-M18X1 5-ST3F00Z','MALE CONNECTOR     24SDS-E-S-12S-M18X1 5-ST3F00Z','MALE CONNECTOR     24SDS-E-S-12S-G3/8-ST3F00Z'],
-        #'Pocet':[1,1,1,1,1,1,4,],
-        #'Zbytek':[0,0,0,0,0,0,0]
     }
-)
+                               )
 
 # Prirazeni oznaceni do Data Frame
 standart_1 = standart_1.add_prefix("Standart_")
@@ -133,11 +122,7 @@ class LoginWindow(qtw.QWidget,Ui_Form):
             self.pushButton_2.clicked.connect(self.vytvor_seznam)
             self.pushButton_2.clicked.connect(self.open_exel)
             
-            
-            
-# # Funkce spusteni Browseru
-#         def otevri(self):                                                           
-#             self.open_dialog_box()
+           
         
 # Ulozeni sek.cisla + vypis do lablu. Kontrola spravneho zapisu sek.cisla
         def uloz(self):                                                            
@@ -147,45 +132,24 @@ class LoginWindow(qtw.QWidget,Ui_Form):
             if otevreny_2 < 7:
             #if otevreny_2 <60:
                 self.label_4.setText(otevreny)
-                sekvencni_cislo.append(otevreny_2)
-                
-                
-                
+                sekvencni_cislo.append(otevreny_2)   
             else:
                 self.label_4.setText("NEPLATNY ZAPIS!!!!")
         # Funkce spusteni Browseru
         
 
-
-
         def otevri(self):
-            #self.open_dialog_box()
             # Vytvoreni promene - otevreny soubor
             filename = QFileDialog.getOpenFileName()
-
             path = filename[0]
-            header_names=['Radek','Ident','Popis','Pocet','Zbytek']                  # Pridany nazvy sloupcu do dataframu
+            # Pridany nazvy sloupcu do dataframu
+            header_names=['Radek','Ident','Popis','Pocet','Zbytek']                  
             seznam_h= pd.read_csv(path,header=None,skiprows=1,names=header_names)
-            path2 = path[-13:]                                                       # separace csv
+            # separace csv
+            path2 = path[-13:] 
             self.label_2.setText(path2)
             
-            
-# Otevreni a vyhledani csv souboru
-        # def open_dialog_box(self):                                                 
-            
-        #     filename = QFileDialog.getOpenFileName()                                 # Vytvoreni promene - otevreny soubor
-            
-        #     path = filename[0]
-        #     header_names=['Radek','Ident','Popis','Pocet','Zbytek']                  # Pridany nazvy sloupcu do dataframu
-        #     seznam_h= pd.read_csv(path,header=None,skiprows=1,names=header_names) 
-        #     path2 = path[-13:]                                                       # separace csv 
-        #     self.label_2.setText(path2)
-
-            #seznam_h_bez_duplicit = seznam_h.drop_duplicates(subset='Popis')
-            #vedle_sebe_s = pd.merge(seznam_h,standart_1,how='outer',left_on='Ident',right_on='Standart_Ident')
-            
-            
-            
+                   
 # Funkce srovani seznamu - Standartni identy
             def srovnani_s(df):
                     if df['Ident'] == df['Standart_Ident']:
@@ -202,29 +166,30 @@ class LoginWindow(qtw.QWidget,Ui_Form):
             if sekvencni_cislo[0] == 1:
                     
                 vedle_sebe_s = pd.merge(seznam_h, standart_1, how='outer', left_on='Ident', right_on='Standart_Ident')
-                vedle_sebe_s['jine_srovnani']=vedle_sebe_s.apply(srovnani_s,axis=1)        #vlozeni sloupce 'Jine_srovnani" dle Identu
-                uprava=vedle_sebe_s[['Radek','Ident','Popis','Pocet','Zbytek','jine_srovnani']] # vypis jen konkretnich sloupcu
-                
-                uprava[['jine_srovnani']]==1                                               # vypis hodnoty True and False, dle hodnoty
-                seznam_s_1=uprava[uprava["jine_srovnani"]==0]                              #vypis cele tabulky dle ==0, pridanim  .index na konec vypise v radku cisla radku kterych se tyka
-                seznam_s_2=uprava[uprava["jine_srovnani"]==1]                              #vypis cele tabulky dle ==1, pridanim  .index na konec vypise v radku cisla radku kterych se tyka
+                #vlozeni sloupce 'Jine_srovnani" dle Identu
+                vedle_sebe_s['jine_srovnani']=vedle_sebe_s.apply(srovnani_s,axis=1)     
+                # vypis jen konkretnich sloupcu
+                uprava=vedle_sebe_s[['Radek','Ident','Popis','Pocet','Zbytek','jine_srovnani']]
+                # vypis hodnoty True and False, dle hodnoty
+                uprava[['jine_srovnani']]==1                 
+                #vypis cele tabulky dle ==0, pridanim  .index na konec vypise v radku cisla radku kterych se tyka
+                seznam_s_1=uprava[uprava["jine_srovnani"]==0]       
+                #vypis cele tabulky dle ==1, pridanim  .index na konec vypise v radku cisla radku kterych se tyka
+                seznam_s_2=uprava[uprava["jine_srovnani"]==1]                              
 
-                #vedle_sebe_n = pd.merge(seznam_s_1,nestandart_1,how='outer',left_on='Ident',right_on='Nestandart_Ident')
-    # Funkce srovani seznamu - Nestandartni identy
-                # def srovnani_n(df):
-                #     if df['Ident'] == df['Nestandart_Ident']:
-                #         return 1
-                #     else:
-                #          return 0
             
                 vedle_sebe_n = pd.merge(seznam_s_1, nestandart_1, how='outer', left_on='Ident', right_on='Nestandart_Ident')
-                vedle_sebe_n['porovnani']=vedle_sebe_n.apply(srovnani_n,axis=1)             #vlozeni sloupce 'Porovnani" dle Identu
-                #vedle_sebe_n[vedle_sebe_n['porovnani'] == 1]                               #Vypis hodnot dle ==1 a sloupce srovnani
-                uprava2=vedle_sebe_n[['Radek','Ident','Popis','Pocet','Zbytek','porovnani']] # vypis jen konkretnich sloupcu
-                uprava2[['porovnani']]==1                                                    # vypis hodnoty True and False, dle hodnoty
-                seznam_s_3=uprava2[uprava2["porovnani"]==0]                                  #vypis cele tabulky dle ==0, pridanim  .index na konec vypise v radku cisla radku kterych se tyka
-                seznam_s_4=uprava2[uprava2["porovnani"]==1]                                  #vypis cele tabulky dle ==1, pridanim  .index na konec vypise v radku cisla radku kterych se tyka
-
+                #vlozeni sloupce 'Porovnani" dle Identu
+                vedle_sebe_n['porovnani']=vedle_sebe_n.apply(srovnani_n,axis=1) 
+                #Vypis hodnot dle ==1 a sloupce srovnani        
+                #vedle_sebe_n[vedle_sebe_n['porovnani'] == 1]                               
+                uprava2=vedle_sebe_n[['Radek','Ident','Popis','Pocet','Zbytek','porovnani']]
+                # vypis jen konkretnich sloupcu
+                uprava2[['porovnani']]==1              
+                #vypis cele tabulky dle ==0, pridanim  .index na konec vypise v radku cisla radku kterych se tyka                                  
+                seznam_s_3=uprava2[uprava2["porovnani"]==0]   
+                #vypis cele tabulky dle ==1, pridanim  .index na konec vypise v radku cisla radku kterych se tyka
+                seznam_s_4=uprava2[uprava2["porovnani"]==1]                                  
                 seznam_s_3_bez_duplicit = seznam_s_3.drop_duplicates(subset='Radek')
                 
                 # Vytvoreni exceloveho souboru Multisheet
@@ -233,37 +198,24 @@ class LoginWindow(qtw.QWidget,Ui_Form):
                     seznam_s_2.to_excel(writer, sheet_name='Standart')
                     seznam_s_4.to_excel(writer, sheet_name='Nestandart')
                     seznam_s_3_bez_duplicit.to_excel(writer, sheet_name='Atyp')
-                    
-                
                 
             else:
                 vedle_sebe_n = pd.merge(seznam_h, nestandart_2, how='outer', left_on='Ident', right_on='Nestandart_Ident')
-                vedle_sebe_n['porovnani'] = vedle_sebe_n.apply(srovnani_n, axis=1)  # vlozeni sloupce 'Porovnani" dle Identu
-                                                                                            #vedle_sebe_n[vedle_sebe_n['porovnani'] == 1]                               #Vypis hodnot dle ==1 a sloupce srovnani
-                                                                                            # vypis jen konkretnich sloupcu
-                uprava2 = vedle_sebe_n[['Radek', 'Ident','Popis', 'Pocet', 'Zbytek', 'porovnani']]
-                                                                                                 # vypis hodnoty True and False, dle hodnoty
-                uprava2[['porovnani']] == 1
-                                                                                             # vypis cele tabulky dle ==0, pridanim  .index na konec vypise v radku cisla radku kterych se tyka
-                #seznam_s_5 = uprava2[uprava2["porovnani"] == 0]
-                                                                                                # vypis cele tabulky dle ==1, pridanim  .index na konec vypise v radku cisla radku kterych se tyka
+                vedle_sebe_n['porovnani'] = vedle_sebe_n.apply(srovnani_n, axis=1)                                                                                        
+                uprava2 = vedle_sebe_n[['Radek', 'Ident','Popis', 'Pocet', 'Zbytek', 'porovnani']]                                                                                                                                                        
                 seznam_s_6 = uprava2[uprava2["porovnani"] == 1]
-
-                #seznam_s_3_bez_duplicit = seznam_s_3.drop_duplicates(subset='Radek')
-                
-                
-    # Vytvoreni exceloveho souboru Multisheet
+         
+                # Vytvoreni exceloveho souboru Multisheet
                 with pd.ExcelWriter(r'C:/Users/kot5brn/Documents/Python_kody/Handlatool/Multisheet.xlsx')as writer:
 
                     seznam_s_6.to_excel(writer,sheet_name='Nestandart')
-                    #seznam_s_4.to_excel(writer,sheet_name='Nestandart')
-                    #seznam_s_3_bez_duplicit.to_excel(writer,sheet_name='Atyp')
+                    
                 
-# Prejmenovani Mutlisheet souboru cislem zakazky             
+        # Prejmenovani Mutlisheet souboru cislem zakazky             
         def vytvor_seznam(self):
             vypis_str =str(self.lineEdit_2.text())
             os.rename('C:/Users/kot5brn/Documents/Python_kody/Handlatool/Multisheet.xlsx',f'C:/Users/kot5brn/Documents/Python_kody/Handlatool/{vypis_str}.xlsx')
-# Automaticke otevreni excelu po jeho ulozeni 
+        # Automaticke otevreni excelu po jeho ulozeni 
         def open_exel(self):
             vypis_str =str(self.lineEdit_2.text())
             os.system(f'start "excel" C:/Users/kot5brn/Documents/Python_kody/Handlatool/{vypis_str}.xlsx"')  #doplneni funkce automatickeho otevreni exelu po vytvoreni excelu
@@ -275,13 +227,4 @@ if __name__ =='__main__':
     widget=LoginWindow()
     widget.show()
     app.exec_()
-
-# if __name__ == "__main__":
-#     import sys
-#     app = QtWidgets.QApplication(sys.argv)
-#     Form = QtWidgets.QWidget()
-#     ui = Ui_Form()
-#     ui.setupUi(Form)
-#     Form.show()
-#     sys.exit(app.exec_())
 
