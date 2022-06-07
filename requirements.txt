@@ -1,0 +1,4 @@
+PyQt5~=5.15.6
+pandas~=1.4.2
+numpy~=1.22.3
+requests~=2.27.1

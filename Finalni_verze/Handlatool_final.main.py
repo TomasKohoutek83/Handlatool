@@ -42,6 +42,7 @@ from PyQt5.QtGui import QIcon
 import pandas as pd
 import numpy as py
 import os
+import requests
 
 from Handlatool_final_QT import Ui_Form
 
